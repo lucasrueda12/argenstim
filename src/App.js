@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Aca voy a hacer mi Steam Argentino pá.
         </a>
       </header>
     </div>
