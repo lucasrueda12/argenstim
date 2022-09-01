@@ -12,11 +12,13 @@ function Header() {
         <Button sx={{ border: '1px solid #533483', color: "#E94560" }} variant="text">Categorias</Button>
         <Button sx={{ border: '1px solid #533483', color: "#E94560"  }} variant="text">Ofertas</Button>
     </nav>
-    <Button sx={{ border: '1px solid #533483', color: "#E94560"  }} variant="text">
-        < ShoppingCartIcon 
-            fontSize="large"
-            sx={{ color: "#E94560" }}
-        />
+    <Button sx={{ border: '1px solid #533483', color: "#E94560"  }}
+            variant="text"
+            startIcon={< ShoppingCartIcon 
+                fontSize="large"
+                sx={{ color: "#E94560" }}
+            />}>
+        Car
     </Button>
     </header>
   );
