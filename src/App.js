@@ -1,21 +1,18 @@
 import React from 'react';
-import NavBar from "./Components/NavBar/NavBar"
+import NavBar from "./Components/Header/Header"
+import {ItemListContainer} from "./Components/ItemListContainer/ItemListContainer"
 
 function App() {
+
+  const item = "Las Ofertas de la SEMANAAA";
   return (
     <>
       <NavBar />
-      <h2 style={styles.titulo}> Las Ofertas de la SEMANAAA</h2>
+      <ItemListContainer greeting={item}/>
     </>
 
   );
 }
 
-const styles = {
-  titulo:{
-    textAlign: 'center',
-    width: '100%',
-    color: '#E94560'
-  }
-}
+
 export default App;
