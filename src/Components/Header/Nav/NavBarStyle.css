@@ -1,0 +1,5 @@
+.navBar{
+    display: flex;
+    width: 700px;
+    justify-content: space-between;
+}

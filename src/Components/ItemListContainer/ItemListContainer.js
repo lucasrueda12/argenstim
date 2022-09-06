@@ -1,14 +1,8 @@
+import './ItemListContainerStyle.css';
 
-export const ItemListContainer = (greeting) =>{
+export const ItemListContainer = ({greeting}) =>{
     return(
-        <h2 style={styles.titulo}>{greeting.greeting}</h2>
+        <h2 className='itemList-tit'>{greeting}</h2>
     );
 }
 
-const styles = {
-    titulo:{
-      textAlign: 'center',
-      width: '100%',
-      color: '#E94560'
-    }
-  }

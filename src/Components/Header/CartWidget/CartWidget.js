@@ -3,7 +3,8 @@ import Button from '@mui/material/Button';
 
 export const CartWidget = ()=>{
   return(
-      <Button sx={{ border: '1px solid #533483', color: "#E94560"  }}
+      <Button sx={{ border: '1px solid #533483',
+                    color: "#E94560"  }}
         variant="text"
         startIcon={< ShoppingCartIcon 
           fontSize="large"
@@ -11,5 +12,5 @@ export const CartWidget = ()=>{
         />}>
         Car
       </Button>
-  )
+  );
 }
