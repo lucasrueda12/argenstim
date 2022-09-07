@@ -21,7 +21,7 @@ const ItemCount = ({stock, initial, onAdd}) =>{
     };
 
     const funOnAdd = ()=>{
-        if(counter <= stock){
+        if(stock > 0){
             return onAdd(counter);
         }
     }
