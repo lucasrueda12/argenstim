@@ -27,9 +27,9 @@ const ItemCount = ({stock, initial, onAdd}) =>{
     }
 
     return (
-        <div className='itemContainer'>
-            <h3 className='item-tit'> God of War: Ragnarok</h3>
-            <img className='item-img' src={gowr} alt="" />
+        <div className='itemCountContainer'>
+            <h3 className='count-tit'> God of War: Ragnarok</h3>
+            <img className='count-img' src={gowr} alt="" />
             <div className='countContainer'>
                 <Button sx={{ color: "#E94560" }} variant="text" onClick={sumarCount}>+</Button>
                 <h3 className="countStyle">{counter}</h3>
