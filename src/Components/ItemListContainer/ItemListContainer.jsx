@@ -67,8 +67,8 @@ export const ItemListContainer = ({greeting}) =>{
   return(
       <>
         <h2 className='itemList-tit'>{greeting}</h2>
-        <ItemCount stock={stock} initial={1} onAdd={func}/>
         <ItemList products={products}/>
+        <ItemCount stock={stock} initial={1} onAdd={func}/>
       </>
   );
 }
