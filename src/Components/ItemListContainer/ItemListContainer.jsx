@@ -4,6 +4,8 @@ import './ItemListContainerStyle.css';
 import ItemCount from '../ItemListContainer/ItemCount/ItemCount';
 import ItemList from '../ItemListContainer/ItemList/ItemList';
 
+
+
 const initialProducts = [
   { id:0, title: 'God Of War: Ragnarok' , 
     description: 'Kratos se embarca en una nueva aventura, acompañado por su hijo, se enfrentaran a la mitologia nordica' ,
@@ -41,21 +43,23 @@ const initialProducts = [
 ];
 
 const promesa = new Promise((res,rej) =>{
-  res(initialProducts);
+  setTimeout(() =>{
+    res(initialProducts);
+  },2000);
 })
 
 export const ItemListContainer = ({greeting}) =>{
 
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
       promesa
       .then((data)=>{
-        setTimeout(() =>{
-          setProducts(data)
-        },2000);
+        setLoading(false);
+        setProducts(data)
       })
-      .catch(()=>{console.log("esta todo mal")})
+      .catch(()=> console.log('error'))
     }, [])
 
   const stock = 5;
@@ -67,7 +71,7 @@ export const ItemListContainer = ({greeting}) =>{
   return(
       <>
         <h2 className='itemList-tit'>{greeting}</h2>
-        <ItemList products={products}/>
+        <ItemList products={products} loading={loading}/>
         <ItemCount stock={stock} initial={1} onAdd={func}/>
       </>
   );
