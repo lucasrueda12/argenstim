@@ -24,7 +24,7 @@ const ItemList = ({products, loading}) =>{
                 <Skeleton animation="wave" width={300} height={100} />
                 </Box> )
                 : 
-                products.map(({id, title, description, price, pictureURL}, i) => <Item key={`${title}-${i}`} id={id} title={title} description={description} price={price} pictureURL={pictureURL}/>)
+                products.map(({id, title, description, price, pictureURL}, i) => <Item key={`${title}-${i}`} id={`${title}-${id}`} title={title} description={description} price={price} pictureURL={pictureURL}/>)
             }
         </div>
     );
