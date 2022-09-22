@@ -57,7 +57,7 @@ export const ItemListContainer = ({greeting}) =>{
       promesa
       .then((data)=>{
         setLoading(false);
-        setProducts(data)
+        setProducts(data);
       })
       .catch(()=> console.log('error'))
     }, [])
