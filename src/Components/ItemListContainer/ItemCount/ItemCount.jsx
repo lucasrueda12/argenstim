@@ -20,12 +20,6 @@ const ItemCount = ({stock, initial, onAdd}) =>{
         };
     };
 
-    const funOnAdd = ()=>{
-        if(stock > 0){
-            return onAdd(counter);
-        }
-    }
-
     return (
         <div className='itemCountContainer'>
             <h3 className='count-tit'> God of War: Ragnarok</h3>
@@ -36,7 +30,7 @@ const ItemCount = ({stock, initial, onAdd}) =>{
                 <Button sx={{ color: "#E94560" }} variant="text" onClick={restarCount}>-</Button>
             </div>
 
-            <Button sx={{ border: '1px solid #533483', color: "#E94560" }} variant="text" onClick={funOnAdd}>Agregar al Carrito</Button>
+            <Button sx={{ border: '1px solid #533483', color: "#E94560" }} variant="text" onClick={()=>{if(stock > 0) onAdd(counter)}}>Agregar al Carrito</Button>
         </div>
     );
 }

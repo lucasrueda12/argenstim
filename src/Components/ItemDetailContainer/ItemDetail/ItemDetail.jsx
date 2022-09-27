@@ -28,8 +28,8 @@ const ItemDetail = ({ product, price, stock, initial }) => {
   return (
     <>
       <Card sx={{ maxWidth: "100%", borderRadius: 4, marginTop: 4, marginRight: 8, marginBottom: 4 , marginLeft: 8 }}>
-        <Grid container >
-          <Grid sx={{ margin: 'auto' }} xs={4}>
+        <Grid container item >
+          <Grid item xs={4} sx={{ margin: 'auto' }} >
           <Card sx={{width: '100%', height: '100%', margin: 'auto'}}>
             <CardMedia
               component="img"
@@ -39,7 +39,7 @@ const ItemDetail = ({ product, price, stock, initial }) => {
             />
             </Card>
           </Grid>
-          <Grid xs={3} sx={{padding: 1}}>
+          <Grid item xs={3} sx={{padding: 1}}>
           <Card sx={{width: '100%', height: '100%', margin: 'auto', textAlign: 'initial'}}>
             <CardContent >
               <Typography gutterBottom variant="h5" component="div">
@@ -54,7 +54,7 @@ const ItemDetail = ({ product, price, stock, initial }) => {
             </CardContent>
             </Card>
           </Grid>
-          <Grid xs={3} sx={{ width: '100%', height: '100%', padding: 3 }} >
+          <Grid item xs={3} sx={{ width: '100%', height: '100%', padding: 3 }} >
             <Card sx={{width: '100%', height: '100%', margin: 'auto'}}>
               <CardContent sx={{ display: "flex", flexDirection: "column",  }}>
               <Box sx={{ display: "flex", flexDirection: "row", width: "100%", justifyContent: 'space-between', marginBottom: 3 }}>
