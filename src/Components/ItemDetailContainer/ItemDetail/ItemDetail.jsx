@@ -4,26 +4,21 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import Grid from '@mui/material/Grid';
+import { Box } from '@mui/system';
+import ItemCount from '../../ItemCount/ItemCount';
 
 import React, { useState } from 'react';
-import { Box } from '@mui/system';
+import { Link } from 'react-router-dom';
 
 const ItemDetail = ({ product, price, stock, initial }) => {
 
-  const [counter, setCounter] = useState(initial);
+  const [bought, setBought] = useState({});
+  const [buyDone, setBuyDone] = useState(false);
 
-  const sumarCount = () => {
-    if (counter < stock) {
-      setCounter(counter + 1);
-    }
-  };
-
-  const restarCount = () => {
-    if (counter > initial) {
-      setCounter(counter - 1);
-    };
-  };
-
+  const onAdd = (cantidad) => {
+    setBought({...product, cantidad});
+    setBuyDone(true);
+  }
 
   return (
     <>
@@ -55,18 +50,14 @@ const ItemDetail = ({ product, price, stock, initial }) => {
             </Card>
           </Grid>
           <Grid item xs={3} sx={{ width: '100%', height: '100%', padding: 3 }} >
-            <Card sx={{width: '100%', height: '100%', margin: 'auto'}}>
-              <CardContent sx={{ display: "flex", flexDirection: "column",  }}>
-              <Box sx={{ display: "flex", flexDirection: "row", width: "100%", justifyContent: 'space-between', marginBottom: 3 }}>
-                <Button sx={{ color: "#E94560" }} variant="contained" onClick={restarCount}>-</Button>
-                <Typography variant="h4" sx={{ color: "#E94560" }} >
-                  {counter}
-                </Typography>
-                <Button sx={{ color: "#E94560" }} variant="contained" onClick={sumarCount}>+</Button>
-              </Box>
-              <Button sx={{ color: "#E94560" }} variant="contained">BUY</Button>
-              </CardContent>
-            </Card>
+            {
+              buyDone?
+              <Link to={'/cart'} className='links'>
+                <Button sx={{ color: "#E94560" }} variant="contained">Finalizar compra</Button>
+              </Link>
+              :
+              <ItemCount stock={stock} initial={initial} onAdd={onAdd} />
+            }
           </Grid>
         </Grid>
       </Card>

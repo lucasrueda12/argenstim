@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import './ItemListContainerStyle.css';
-import ItemCount from '../ItemListContainer/ItemCount/ItemCount';
 import ItemList from '../ItemListContainer/ItemList/ItemList';
 
 
