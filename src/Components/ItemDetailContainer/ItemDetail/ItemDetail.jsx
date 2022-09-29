@@ -1,14 +1,10 @@
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
-import Grid from '@mui/material/Grid';
+import { CardContent, Card, CardMedia, Typography, Button, Grid } from '@mui/material';
 import { Box } from '@mui/system';
-import ItemCount from '../../ItemCount/ItemCount';
 
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 import { Link } from 'react-router-dom';
+
+import ItemCount from '../../ItemCount/ItemCount';
 
 const ItemDetail = ({ product, price, stock, initial }) => {
 
@@ -19,6 +15,8 @@ const ItemDetail = ({ product, price, stock, initial }) => {
     setBought({...product, cantidad});
     setBuyDone(true);
   }
+
+  const detailContext = createContext(bought);
 
   return (
     <>

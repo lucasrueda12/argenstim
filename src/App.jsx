@@ -4,6 +4,8 @@ import { ItemListContainer } from "./Components/ItemListContainer/ItemListContai
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Cart } from './Components/CartView/Cart';
+import { CartProvider } from './Context/CartCustomProvider';
+
 
 function App() {
   const item = "Las Ofertas de la SEMANAAA";
@@ -11,14 +13,15 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path='/' element={<ItemListContainer greeting={item}/>}/>
-          <Route path='/category/:IdCategory' element={<ItemListContainer greeting={item} />}/>
-          <Route path='/product/:IdProduct' element={<ItemDetailContainer />}/>
-          <Route path='/cart' element={<Cart />}/>
-        </Routes>
-
+        <CartProvider>
+          <Header />
+          <Routes>
+            <Route path='/' element={<ItemListContainer greeting={item} />} />
+            <Route path='/category/:IdCategory' element={<ItemListContainer greeting={item} />} />
+            <Route path='/product/:IdProduct' element={<ItemDetailContainer />} />
+            <Route path='/cart' element={<Cart />} />
+          </Routes>
+        </CartProvider>
       </BrowserRouter>
     </>
   );
