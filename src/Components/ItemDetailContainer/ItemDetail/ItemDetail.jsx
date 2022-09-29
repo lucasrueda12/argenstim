@@ -56,7 +56,7 @@ const ItemDetail = ({ product, price, stock, initial }) => {
                 <CardContent sx={{ display: "flex", flexDirection: "column", }}>
                   <Box sx={{ display: "flex", flexDirection: "row", width: "100%", justifyContent: 'space-between', margin: 'auto' }}>
                     <Link to={'/cart'} className='links'>
-                      <Button sx={{ color: "#E94560" }} variant="contained">Finalizar compra</Button>
+                      <Button sx={{ color: "#E94560" }} variant="contained">Finally purchase</Button>
                     </Link>
                   </Box>
                 </CardContent>
