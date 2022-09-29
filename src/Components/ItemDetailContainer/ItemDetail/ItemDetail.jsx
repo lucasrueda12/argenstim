@@ -52,9 +52,15 @@ const ItemDetail = ({ product, price, stock, initial }) => {
           <Grid item xs={3} sx={{ width: '100%', height: '100%', padding: 3 }} >
             {
               buyDone?
-              <Link to={'/cart'} className='links'>
-                <Button sx={{ color: "#E94560" }} variant="contained">Finalizar compra</Button>
-              </Link>
+              <Card sx={{ width: '100%', height: '100%', margin: 'auto' }}>
+                <CardContent sx={{ display: "flex", flexDirection: "column", }}>
+                  <Box sx={{ display: "flex", flexDirection: "row", width: "100%", justifyContent: 'space-between', margin: 'auto' }}>
+                    <Link to={'/cart'} className='links'>
+                      <Button sx={{ color: "#E94560" }} variant="contained">Finalizar compra</Button>
+                    </Link>
+                  </Box>
+                </CardContent>
+              </Card>
               :
               <ItemCount stock={stock} initial={initial} onAdd={onAdd} />
             }
