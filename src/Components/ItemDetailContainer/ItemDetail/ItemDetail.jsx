@@ -1,22 +1,21 @@
 import { CardContent, Card, CardMedia, Typography, Button, Grid } from '@mui/material';
 import { Box } from '@mui/system';
 
-import React, { useState, createContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import ItemCount from '../../ItemCount/ItemCount';
+import { Context } from '../../../Context/CartCustomProvider'
 
 const ItemDetail = ({ product, price, stock, initial }) => {
 
-  const [bought, setBought] = useState({});
   const [buyDone, setBuyDone] = useState(false);
+  const { addItem } = useContext(Context);
 
-  const onAdd = (cantidad) => {
-    setBought({...product, cantidad});
+  const onAdd = (quantity) => {
+    addItem({...product, price}, quantity);
     setBuyDone(true);
   }
-
-  const detailContext = createContext(bought);
 
   return (
     <>
