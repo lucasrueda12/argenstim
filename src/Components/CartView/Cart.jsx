@@ -2,13 +2,24 @@ import { CardContent, Card, CardMedia, Typography, Box, Button } from '@mui/mate
 import IconButton from '@mui/material/IconButton';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import PaymentIcon from '@mui/icons-material/Payment';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 import React, { useContext, useEffect, useState } from 'react';
-import { Context } from '../../Context/CartCustomProvider'
+import { Context } from '../../Context/CartCustomProvider';
 
 export const Cart = () => {
 
   const { cart, removeItem, clear } = useContext(Context);
+  const [ totpay, setTotpay]  = useState(0.00);
+  
+  useEffect(()=>{
+    let suma=0;
+    cart.forEach((i)=>{
+      suma += i.price * i.quantity;
+    });
+    setTotpay(suma);
+  }, [cart])
+  
 
   return (
     <Card sx={{ display: 'flex', flexDirection: 'column', margin: 'auto', mt: 2, width: '90%', height: 'auto' }}>
@@ -24,7 +35,7 @@ export const Cart = () => {
         cart.length > 0 ?
           cart.map((cartItem) => {
             return (
-              <Card sx={{ display: 'flex', justifyContent: 'space-between', width: 'auto', m: 1 }}>
+              <Card key={`cartItem-${cartItem.id}`} sx={{ display: 'flex', justifyContent: 'space-between', width: 'auto', m: 1 }}>
                 <CardMedia
                   component="img"
                   sx={{ width: 151, height: 151 }}
@@ -37,7 +48,7 @@ export const Cart = () => {
                       {cartItem.name_original}
                     </Typography>
                     <Typography variant="subtitle1" color="text.secondary" component="div">
-                      {cartItem.price * cartItem.quantity}
+                      {Math.round(cartItem.price * cartItem.quantity * 100) / 100}
                     </Typography>
                   </CardContent>
                 </Box>
@@ -60,10 +71,16 @@ export const Cart = () => {
             </CardContent>
           </Card>
       }
-      <Box  sx={{ display: 'flex', justifyContent: 'end', alignItems: 'center', pl: 1, pb: 1, pr: 3, backgroundColor: '#16213E' }}>
+      <Box  sx={{ display: 'flex',flexDirection:'column' , justifyContent: 'end', alignItems: 'end', pl: 1, pb: 1, pr: 3, backgroundColor: '#16213E' }}>
+          <Box sx={{display: 'flex', flexDirection:'row', justifyContent:'space-evenly' ,minWidth: 100, m:1, borderRadius: 1, border: 1, borderColor:'#E94560', p:0.5, bgcolor:'#e7e7e7' }}>
+            <AttachMoneyIcon sx={{color: "#E94560"}} />
+            <Typography component="div" variant="subtitle1" >
+              { Math.round(totpay * 100) / 100 }
+            </Typography>
+          </Box>
         <IconButton  aria-label="next" onClick={()=>console.log("solta la teka")} sx={{color: "#E94560"}}>
           <Typography component="div" variant="subtitle1" sx={{color: "#E94560"}}>
-          payment methods
+            payment methods
           </Typography>
           <PaymentIcon />
         </IconButton>
