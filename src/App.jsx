@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from "./Components/Header/Header"
 import { ItemListContainer } from "./Components/ItemListContainer/ItemListContainer"
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';

@@ -7,16 +7,18 @@ import { Link } from 'react-router-dom';
 import ItemCount from '../../ItemCount/ItemCount';
 import { Context } from '../../../Context/CartCustomProvider'
 
-const ItemDetail = ({ product, price, stock, initial }) => {
+const ItemDetail = ({ product, initial }) => {
 
   const [buyDone, setBuyDone] = useState(false);
   const { addItem } = useContext(Context);
 
   const onAdd = (quantity) => {
-    addItem({...product, price}, quantity);
+    addItem({...product}, quantity);
     setBuyDone(true);
   }
-
+  const impPais = 1.30;
+  const perpGanancias = 1.45;
+  
   return (
     <>
       <Card sx={{ maxWidth: "100%", borderRadius: 4, marginTop: 4, marginRight: 8, marginBottom: 4 , marginLeft: 8 }}>
@@ -35,7 +37,7 @@ const ItemDetail = ({ product, price, stock, initial }) => {
           <Card sx={{width: '100%', height: '100%', margin: 'auto', textAlign: 'initial'}}>
             <CardContent >
               <Typography gutterBottom variant="h5" component="div">
-                {price.toLocaleString("es-AR", { style: "currency", currency: "ARS" })}
+                {(product.price* impPais*perpGanancias).toLocaleString("es-AR", { style: "currency", currency: "ARS" })}
               </Typography>
               <Typography gutterBottom variant="h5" component="div" >
                 {product.name}
@@ -59,7 +61,7 @@ const ItemDetail = ({ product, price, stock, initial }) => {
                 </CardContent>
               </Card>
               :
-              <ItemCount stock={stock} initial={initial} onAdd={onAdd} />
+              <ItemCount stock={product.stock} initial={initial} onAdd={onAdd} />
             }
           </Grid>
         </Grid>

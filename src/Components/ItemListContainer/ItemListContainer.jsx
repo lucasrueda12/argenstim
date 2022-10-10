@@ -3,50 +3,45 @@ import { useParams } from 'react-router-dom';
 
 import './ItemListContainerStyle.css';
 import ItemList from '../ItemListContainer/ItemList/ItemList';
-
-
-
-
-
+import { db } from '../../firebase/firebase'
+import { getDocs, collection, query, where } from 'firebase/firestore'
 
 export const ItemListContainer = ({greeting }) =>{
 
-  let { IdCategory } = useParams();
-  console.log(IdCategory);
-
+  const { IdCategory } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  const URL_BASE = 'https://api.rawg.io/api/games?key=7f9439e8272943e7b85ecd694fab5ca2&dates=2019-09-01,2019-09-30&platforms=18,1,7';
-
     useEffect(() => {
-      fetch(URL_BASE)
-      .then((response) => response.json())
+      const productsCollection = collection(db, 'products');
+      let q;
+      IdCategory? 
+      q = query(productsCollection, where('genres', 'array-contains', {slug:IdCategory}))
+      :
+      q = productsCollection;
+      getDocs(q)
       .then((data) => {
-        console.log(data);
-        let lista = data.results.map((product) => {
-            return {...product, stock: Math.floor(Math.random() *100), price: Math.floor(Math.random() *10000)}
-        })
-        if(IdCategory !== undefined){
-          lista = lista.filter((product) => product.genres.some((genre) => genre.slug === IdCategory))
-        }
-        setProducts(lista);
+        console.log(data.docs);
+        const list = data.docs.map((product) =>{
+          return {
+            ...product.data(),
+            id: product.id
+          };
+        });
+        setProducts(list);
+        console.log(list);
       })
-      .catch((error)=> {
+      .catch((e)=>{
         setError(true);
-        console.log('error');
         console.log(error);
       })
       .finally(()=>{
-        setLoading(false)
+        setLoading(false);
       })
-    }, [IdCategory])
-
-
+    }, [IdCategory, error])
     
   console.log(products);
-  const stock = 5;
 
   return(
       <>

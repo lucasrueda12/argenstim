@@ -3,6 +3,9 @@ import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail/ItemDetail'
 
 import LinearProgress from '@mui/material/LinearProgress';
+import { db } from '../../firebase/firebase';
+import { doc, getDoc, collection } from 'firebase/firestore'
+
 
 const ItemDetailContainer = () => {
 
@@ -10,17 +13,27 @@ const ItemDetailContainer = () => {
 
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-        fetch(`https://api.rawg.io/api/games/${IdProduct}?key=7f9439e8272943e7b85ecd694fab5ca2&dates=2019-09-01,2019-09-30&platforms=18,1,7`)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          setLoading(false);
-          setProduct(data);
-        })
-        .catch(() => console.log('error'))
-}, []);
+    const productCollection = collection(db, 'products')
+    const refDoc = doc(productCollection, IdProduct);
+    getDoc(refDoc)
+    .then((result) =>{
+      console.log(result.data());
+      setProduct({
+        id: result.id,
+        ...result.data()
+      })
+    })
+    .catch((e)=>{
+      setError(true);
+      console.log(error);
+    })
+    .finally(()=>{
+      setLoading(false);
+    })
+}, [IdProduct, error]);
 
   return (
     <>
@@ -28,7 +41,7 @@ const ItemDetailContainer = () => {
         loading ?
         <LinearProgress color="secondary" />
         :
-        <ItemDetail product={product} price={4444.4} stock={5} initial={1} />
+        <ItemDetail product={product}initial={1} />
       }
         </>
   );
