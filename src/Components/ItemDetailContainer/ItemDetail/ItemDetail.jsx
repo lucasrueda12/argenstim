@@ -13,8 +13,10 @@ const ItemDetail = ({ product, initial }) => {
   const { addItem } = useContext(Context);
 
   const onAdd = (quantity) => {
-    addItem({...product}, quantity);
-    setBuyDone(true);
+    if(product.stock>0){
+      addItem({...product}, quantity);
+      setBuyDone(true);
+    }
   }
   const impPais = 1.30;
   const perpGanancias = 1.45;
@@ -62,6 +64,10 @@ const ItemDetail = ({ product, initial }) => {
               </Card>
               :
               <ItemCount stock={product.stock} initial={initial} onAdd={onAdd} />
+            }{
+              product.stock <=0 && <Typography variant="body2" color="text.secondary">
+              Ya no hay stock
+              </Typography>
             }
           </Grid>
         </Grid>
