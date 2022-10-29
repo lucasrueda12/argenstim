@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import LinearProgress from '@mui/material/LinearProgress';
+
 
 import './ItemListContainerStyle.css';
 import ItemList from '../ItemListContainer/ItemList/ItemList';
 import { db } from '../../firebase/firebase'
 import { getDocs, collection, query, where } from 'firebase/firestore'
+import { Carrusel } from './Carrusel/Carrusel';
 
 export const ItemListContainer = ({greeting }) =>{
 
@@ -45,9 +48,18 @@ export const ItemListContainer = ({greeting }) =>{
 
   return(
       <>
-        <h2 className='itemList-tit'>{greeting}</h2>
-        <ItemList products={products} loading={loading} />
-        {/* <ItemCount stock={stock} initial={1} onAdd={func}/> */}
+      {
+        loading ?
+        <LinearProgress color="secondary" />
+        :
+        <Carrusel products={products} greeting={greeting} />
+      }
+      {
+        loading ?
+        <LinearProgress color="secondary" />
+        :
+        <ItemList products={products} greeting={greeting} />
+      }
       </>
   );
 }
