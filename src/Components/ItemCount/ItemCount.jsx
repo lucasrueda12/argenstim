@@ -7,6 +7,11 @@ import Typography from '@mui/material/Typography';
 
 import React, { useState } from 'react';
 
+/* 
+  contador de la cantidad de items que desea comprar el usuario
+  teniendo en cuenta el stock del producto y si es posible comprar
+*/
+
 const ItemCount = ({ stock, initial, onAdd }) => {
 
   const [counter, setCounter] = useState(initial);

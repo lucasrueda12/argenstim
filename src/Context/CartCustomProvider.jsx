@@ -4,6 +4,7 @@ export const Context = createContext();
 
 const { Provider } = Context;
 
+/* contexto del carrito para que se comunique con los demas componentes que lo necesiten */
 export const CartProvider = ({ children }) => {
 
   const [cart, setCart] = useState([]);

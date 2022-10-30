@@ -12,6 +12,12 @@ import { Context } from '../../Context/CartCustomProvider';
 import { db } from '../../firebase/firebase'
 import { collection, addDoc, doc, serverTimestamp, updateDoc } from 'firebase/firestore'
 
+/* 
+  Carrito donde se almacenan los productos del comprador, si compro 
+  se le piden los datos asi cargarlo a la data base, de lo contrario mostramos un mensaje
+  informando que el carrito esta vacio, quitando la posibilidad de compra
+*/
+
 export const Cart = () => {
 
   const { cart, removeItem, clear } = useContext(Context);

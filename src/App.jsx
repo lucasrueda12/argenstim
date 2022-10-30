@@ -6,7 +6,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Cart } from './Components/CartView/Cart';
 import { CartProvider } from './Context/CartCustomProvider';
 
-
+/* App principal, con los links a las secciones de la pagina
+  En esta app de Reacto implemente material UI para el diseño,
+  pero tambien genere componentes a mano para demostrar mis conocimientos
+  y que no siempre hay que depender de otra api
+*/
 function App() {
   const item = "Las Ofertas de la SEMANAAA";
 

@@ -4,12 +4,9 @@ import { Link } from 'react-router-dom';
 
 import '../Nav/NavBarStyle.css';
 
-/* const category = [
-    { id: 0, name: 'Action', root: '/category/action' },
-    { id: 1, name: 'Adventure', root: '/category/adventure' },
-    { id: 2, name: 'RPG', root: '/category/rpg' },
-    { id: 3, name: 'Sports', root: '/category/sports' }
-]; */
+/* 
+  se cargan las categorias para ser mostradas al usuario en el header
+*/
 
 export const NavBar = ({ category }) => {
   return (

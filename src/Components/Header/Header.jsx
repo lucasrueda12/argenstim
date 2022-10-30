@@ -12,6 +12,8 @@ const category = [
   { id: 3, name: 'sports', root: '/category/sports' }
 ];
 
+/* header de la pagina, con logo, nombre y el navBar donde se presentaran las categorias */
+
 const Header = () =>{
   return (
     <header className="headerContain">

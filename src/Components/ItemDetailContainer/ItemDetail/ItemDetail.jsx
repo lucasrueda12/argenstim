@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import ItemCount from '../../ItemCount/ItemCount';
 import { Context } from '../../../Context/CartCustomProvider'
 
+
+/* genera el detalle del producto en particular */
 const ItemDetail = ({ product, initial }) => {
 
   const [buyDone, setBuyDone] = useState(false);
@@ -18,6 +20,8 @@ const ItemDetail = ({ product, initial }) => {
       setBuyDone(true);
     }
   }
+
+  /* impuestos */
   const impPais = 1.30;
   const perpGanancias = 1.45;
   

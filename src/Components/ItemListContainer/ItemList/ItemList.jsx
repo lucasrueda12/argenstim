@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './ItemListStyle.css';
 
+/* mediante un map creamos la variedad de productos para mostrarlos por pantalla */
 const ItemList = ({ products, greeting }) => {
 
     return (

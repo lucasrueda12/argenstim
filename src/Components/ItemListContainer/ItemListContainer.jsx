@@ -9,6 +9,11 @@ import { db } from '../../firebase/firebase'
 import { getDocs, collection, query, where } from 'firebase/firestore'
 import { Carrusel } from './Carrusel/Carrusel';
 
+
+/* Lista de todos los productos traidos desde FireStore
+  con un carrusel de los mismos, ambos se muestran cuando termina de traer los
+  productos el fetch
+*/
 export const ItemListContainer = ({greeting }) =>{
 
   const { IdCategory } = useParams();

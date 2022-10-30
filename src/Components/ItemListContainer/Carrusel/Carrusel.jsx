@@ -11,7 +11,7 @@ import SkipNextIcon from '@mui/icons-material/SkipNext';
 
 import { Link } from 'react-router-dom';
 
-
+/* Carrusel de los productos para que sea mas didactivo */
 export const Carrusel = ({ products }) => {
     const theme = useTheme();
 
